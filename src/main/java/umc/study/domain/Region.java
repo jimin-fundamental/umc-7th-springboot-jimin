@@ -2,6 +2,7 @@ package umc.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.RegionName;
 
@@ -16,7 +17,7 @@ public class Region extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @Column(name = "region_name", nullable = false, length = 10)
     private RegionName regionName;
 
 
