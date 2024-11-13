@@ -6,6 +6,9 @@ import lombok.*;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.RegionName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -19,6 +22,7 @@ public class Region extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "region_name", nullable = false, length = 10)
     private RegionName regionName;
+
 
 
 }

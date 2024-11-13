@@ -29,7 +29,9 @@ public class QMission extends EntityPathBase<Mission> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Integer> percentage = createNumber("percentage", Integer.class);
+    public final StringPath name = createString("name");
+
+    public final QRegion region;
 
     public final QRestaurant restaurant;
 
@@ -56,6 +58,7 @@ public class QMission extends EntityPathBase<Mission> {
 
     public QMission(Class<? extends Mission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.region = inits.isInitialized("region") ? new QRegion(forProperty("region")) : null;
         this.restaurant = inits.isInitialized("restaurant") ? new QRestaurant(forProperty("restaurant"), inits.get("restaurant")) : null;
         this.user = inits.isInitialized("user") ? new QUser(forProperty("user")) : null;
     }

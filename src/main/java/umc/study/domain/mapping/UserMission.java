@@ -29,5 +29,8 @@ public class UserMission extends BaseEntity {
     @Column(nullable = false, length = 15)
     private Status status;
 
+//    @Column(nullable = true, length = 5)
+//    private int percentage;
+
 
 }

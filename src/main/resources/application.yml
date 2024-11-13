@@ -17,3 +17,4 @@ spring:
         hbm2ddl:
           auto: update
         default_batch_fetch_size: 1000
+        open-in-view: true
