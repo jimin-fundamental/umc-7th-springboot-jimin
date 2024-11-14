@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.repository.UserRepository.UserRepository;
-import umc.study.web.dto.UserPointDTO;
+import umc.study.domain.UserPointDTO;
 
 @Service
 @RequiredArgsConstructor

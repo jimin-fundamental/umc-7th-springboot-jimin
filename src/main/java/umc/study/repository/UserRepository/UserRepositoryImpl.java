@@ -7,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import umc.study.domain.QPoint;
 import umc.study.domain.QUser;
-import umc.study.web.dto.UserPointDTO;
-
-import java.util.List;
+import umc.study.domain.UserPointDTO;
 
 @Repository
 @RequiredArgsConstructor

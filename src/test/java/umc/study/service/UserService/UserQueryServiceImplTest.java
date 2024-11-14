@@ -3,7 +3,7 @@ package umc.study.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import umc.study.web.dto.UserPointDTO;
+import umc.study.domain.UserPointDTO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
