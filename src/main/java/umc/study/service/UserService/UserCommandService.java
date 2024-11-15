@@ -5,4 +5,5 @@ import umc.study.web.dto.UserDTO.UserRequestDTO;
 
 public interface UserCommandService {
     public User joinUser(UserRequestDTO.JoinDto request);
+    public boolean existsById(Long id);
 }

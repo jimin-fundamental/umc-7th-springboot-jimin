@@ -17,6 +17,10 @@ public class UserCommandServiceImpl implements UserCommandService{
     private final UserRepository userRepository;
     private final FoodCategoryRepository foodCategoryRepository;
 
+    public boolean existsById(Long userId) {
+        return userRepository.existsById(userId);
+    }
+
     @Override
     @Transactional
     public User joinUser(UserRequestDTO.JoinDto request) {
