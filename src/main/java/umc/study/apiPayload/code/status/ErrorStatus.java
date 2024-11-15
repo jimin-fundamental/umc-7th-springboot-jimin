@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import umc.study.apiPayload.code.BaseErrorCode;
 import umc.study.apiPayload.code.ErrorReasonDTO;
+import umc.study.domain.Restaurant;
 
 @Getter
 @AllArgsConstructor
@@ -24,8 +25,12 @@ public enum ErrorStatus implements BaseErrorCode {
     ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다."),
 
     // For test
-    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
+    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
 
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4001", "존재하지 않는 음식 카테고리입니다."),
+    REGION_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4002", "존재하지 않는 지역 카테고리입니다."),
+    USER_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4003", "존재하지 않는 유저 카테고리입니다."),
+    MISSION_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4004", "존재하지 않는 미션입니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

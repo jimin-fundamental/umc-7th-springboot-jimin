@@ -60,7 +60,7 @@ public class QMission extends EntityPathBase<Mission> {
         super(type, metadata, inits);
         this.region = inits.isInitialized("region") ? new QRegion(forProperty("region")) : null;
         this.restaurant = inits.isInitialized("restaurant") ? new QRestaurant(forProperty("restaurant"), inits.get("restaurant")) : null;
-        this.user = inits.isInitialized("user") ? new QUser(forProperty("user")) : null;
+        this.user = inits.isInitialized("user") ? new QUser(forProperty("user"), inits.get("user")) : null;
     }
 
 }

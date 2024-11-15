@@ -2,6 +2,9 @@ package umc.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.*;
 
@@ -17,6 +20,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class User extends BaseEntity {
     @Id //기본 키 생성
     @GeneratedValue(strategy = GenerationType.IDENTITY) //해당 내용은 JPA가 통신을 하는 DBMS의 방식을 따른다는 뜻
@@ -32,7 +37,15 @@ public class User extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(10)")
     private Gender gender;
 
+    @Column(nullable = false)
     private LocalDate birthDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "preferCategoryId")
+    private FoodCategory foodCategory;
+
+    @ColumnDefault("0")
+    private Integer point;
 
     //review, point, mission, alarm에 대한 양방향매핑
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

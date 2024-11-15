@@ -51,6 +51,7 @@ dependencies {
 
 	runtimeOnly 'com.h2database:h2' // mysql내의 실제 데이터를 오염시키지 않고 h2 database를 통한 테스트 코드를 작성하기 위해 진행
 
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0' //swagger 세팅
 
 
 
