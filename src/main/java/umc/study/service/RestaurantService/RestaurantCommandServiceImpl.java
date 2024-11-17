@@ -26,7 +26,7 @@ public class RestaurantCommandServiceImpl implements RestaurantCommandService{
     }
 
     @Override
-    public Restaurant addRestaurant(Long regionId, RestaurantRequestDTO.JoinDto request) {
+    public Restaurant addRestaurant(Long regionId, RestaurantRequestDTO.JoinRestaurantDTO request) {
         //regionId로 region 만들기
         // regionId로 region 검색
         Region region = regionRepository.findById(regionId)
@@ -37,5 +37,12 @@ public class RestaurantCommandServiceImpl implements RestaurantCommandService{
 
 
         return restaurantRepository.save(newStore);
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        boolean exists = restaurantRepository.existsById(id);
+
+        return exists;
     }
 }

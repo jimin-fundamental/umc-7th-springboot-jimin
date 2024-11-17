@@ -23,7 +23,7 @@ public class UserCommandServiceImpl implements UserCommandService{
 
     @Override
     @Transactional
-    public User joinUser(UserRequestDTO.JoinDto request) {
+    public User joinUser(UserRequestDTO.JoinUserDTO request) {
         // 요청된 카테고리 이름을 사용해 FoodCategory 조회 또는 생성 - Stream 사용
         FoodCategory foodCategory = foodCategoryRepository.findAll().stream()
                 .filter(category -> category.getName().equals(request.getFoodCategoryName()))

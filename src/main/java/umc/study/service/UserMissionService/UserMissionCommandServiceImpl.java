@@ -12,8 +12,7 @@ import umc.study.repository.MissionRepository.MissionRepository;
 import umc.study.repository.RestaurantRepository.RestaurantRepository;
 import umc.study.repository.UserMissionRepository.UserMissionRepository;
 import umc.study.repository.UserRepository.UserRepository;
-import umc.study.web.dto.ReviewDTO.ReviewRequestDTO;
-import umc.study.web.dto.UserMissionDTO.UserMissionRequestDTO;
+import umc.study.web.dto.UserDTO.UserRequestDTO;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +23,7 @@ public class UserMissionCommandServiceImpl implements UserMissionCommandService 
 
 
     @Override
-    public UserMission addUserMission(Long missionId, UserMissionRequestDTO.JoinDto request) {
+    public UserMission addUserMission(Long missionId, UserRequestDTO.JoinUserMissionDTO request) {
 
         Mission mission = missionRepository.findById(missionId)
                 .orElseThrow(() -> new IllegalArgumentException(ErrorStatus.MISSION_NOT_FOUND.toString()));
