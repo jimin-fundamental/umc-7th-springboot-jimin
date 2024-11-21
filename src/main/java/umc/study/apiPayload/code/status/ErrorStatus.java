@@ -31,7 +31,8 @@ public enum ErrorStatus implements BaseErrorCode {
     REGION_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4002", "존재하지 않는 지역 카테고리입니다."),
     USER_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4003", "존재하지 않는 유저 카테고리입니다."),
     MISSION_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4004", "존재하지 않는 미션입니다."),
-    RESTAURANT_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4005", "존재하지 않는 레스토랑입니다.");
+    RESTAURANT_NOT_FOUND(HttpStatus.BAD_REQUEST, "Category4005", "존재하지 않는 레스토랑입니다."),
+    PAGE_NOT_EXIST(HttpStatus.BAD_REQUEST, "Category4006", "존재하지 않는 페이지입니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

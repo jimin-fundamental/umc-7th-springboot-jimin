@@ -3,9 +3,12 @@ package umc.study.repository.RestaurantRepository;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import umc.study.domain.QRestaurant;
 import umc.study.domain.Restaurant;
+import umc.study.domain.Review;
 
 import java.util.List;
 
@@ -32,4 +35,5 @@ public class RestaurantRepositoryImpl implements RestaurantRepositoryCustom{
                 .where(predicate)
                 .fetch();
     }
+
 }

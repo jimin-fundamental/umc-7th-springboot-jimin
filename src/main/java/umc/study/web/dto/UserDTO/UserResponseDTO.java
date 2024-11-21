@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.study.domain.enums.Status;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class UserResponseDTO {
 
@@ -26,5 +29,29 @@ public class UserResponseDTO {
     public static class JoinUserMissionResultDTO {
         Long userMissionId;
         LocalDateTime createdAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UserMissionPreViewListDTO {
+        List<UserMissionPreViewDTO> userMissionList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UserMissionPreViewDTO {
+        String title;
+        Long userId;
+        Status status;
+        LocalDate createdAt;
     }
 }

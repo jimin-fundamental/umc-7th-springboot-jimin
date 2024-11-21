@@ -1,6 +1,7 @@
 package umc.study.service.RestaurantService;
 
 import org.springframework.data.domain.Page;
+import umc.study.domain.Mission;
 import umc.study.domain.Restaurant;
 import umc.study.domain.Review;
 
@@ -13,6 +14,6 @@ public interface RestaurantQueryService {
     Optional<Restaurant> findRestaurant(Long id); // 단일 객체를 반환 - null일 수 있으므로 optional로 감싸줘야 함
     //이름과 평점으로 식당 리스트를 조회
     List<Restaurant> findRestaurantsByNameAndScore(String name, Float score); // List 자체를 반환하기에, list가 비어있어도 오류가 발생하지 않음
-
-    Page<Review> getReviewList(Long restaurantId, Integer page);
+    Page<Review> getReviewList(Long RestaurantId, Integer page);
+    Page<Mission> getMissionList(Long RestaurantId, Integer page);
 }

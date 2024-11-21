@@ -1,6 +1,8 @@
 package umc.study.service.MissionService;
 
+import org.springframework.data.domain.Page;
 import umc.study.domain.Mission;
+import umc.study.domain.enums.Status;
 import umc.study.domain.mapping.UserMission;
 
 import java.time.LocalDateTime;
@@ -18,4 +20,7 @@ public interface MissionQueryService {
 
     //현재 선택된 지역에서 도전 가능한 미션 목록을 조회하는 쿼리 (페이징 포함)
     public List<Mission> findUserMissionsByRegionCriteria(Long userId, Long regionId, LocalDateTime createdAt, int pageSize);
+
+    Page<Mission> getMissionList(Long userId, Integer adjustedPage);
+    Page<UserMission> getUserMissionList(Long userId, Status status, Integer adjustedPage);
 }

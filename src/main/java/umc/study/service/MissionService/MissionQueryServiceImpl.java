@@ -1,11 +1,17 @@
 package umc.study.service.MissionService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.domain.Mission;
+import umc.study.domain.User;
+import umc.study.domain.enums.Status;
 import umc.study.domain.mapping.UserMission;
 import umc.study.repository.MissionRepository.MissionRepository;
+import umc.study.repository.UserMissionRepository.UserMissionRepository;
+import umc.study.repository.UserRepository.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +22,8 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class MissionQueryServiceImpl implements MissionQueryService {
     private final MissionRepository missionRepository;
-
+    private final UserRepository userRepository;
+    private final UserMissionRepository userMissionRepository;
 
     @Override
     public List<Mission> getAllMission() {
@@ -62,6 +69,21 @@ public class MissionQueryServiceImpl implements MissionQueryService {
         }
 
         return filteredRegionMissions;
+    }
+
+
+    @Override
+    public Page<Mission> getMissionList(Long userId, Integer adjustedPage) {
+        User user = userRepository.findById(userId).get();
+        Page<Mission> UserPage = missionRepository.findAllByUser(user, PageRequest.of(adjustedPage, 10));
+        return UserPage;
+    }
+
+    @Override
+    public Page<UserMission> getUserMissionList(Long userId, Status status, Integer adjustedPage) {
+        User user = userRepository.findById(userId).get();
+        Page<UserMission> UserPage = userMissionRepository.findAllByUserAndStatus(user, status, PageRequest.of(adjustedPage, 10));
+        return UserPage;
     }
 
 }

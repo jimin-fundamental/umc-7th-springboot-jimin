@@ -63,15 +63,7 @@ public class RestaurantConverter {
                 .body(review.getContent())
                 .build();
     }
-                //가게의 리뷰 목록 조회
-            //    public static class ReviewPreViewListDTO {
-            //        List<RestaurantResponseDTO.ReviewPreViewDTO> reviewList;
-            //        Integer listSize;
-            //        Integer totalPage;
-            //        Long totalElements;
-            //        Boolean isFirst;
-            //        Boolean isLast;
-            //    }
+
     public static RestaurantResponseDTO.ReviewPreViewListDTO reviewPreViewListDTO(Page<Review> reviewList){
         List<RestaurantResponseDTO.ReviewPreViewDTO> reviewPreViewDTOList = reviewList.stream()
                 .map(RestaurantConverter::reviewPreViewDTO).collect(Collectors.toList());
@@ -83,6 +75,29 @@ public class RestaurantConverter {
                 .totalElements(reviewList.getTotalElements())
                 .listSize(reviewPreViewDTOList.size())
                 .reviewList(reviewPreViewDTOList)
+                .build();
+    }
+
+    //가게의 미션 목록의 각 리뷰 DTO
+    public static RestaurantResponseDTO.MissionPreViewDTO missionPreViewDTO(Mission mission){
+        return RestaurantResponseDTO.MissionPreViewDTO.builder()
+//                .ownerNickname(review.getUser().getUsername()) //객체그래프탐색 - ManyToOne으로 지정한 Member 통해 가져오기
+                .title(mission.getName())
+                .createdAt(mission.getCreatedAt().toLocalDate())
+                .build();
+    }
+
+    public static RestaurantResponseDTO.MissionPreViewListDTO missionPreViewListDTO(Page<Mission> missionList){
+        List<RestaurantResponseDTO.MissionPreViewDTO> missionPreViewDTOList = missionList.stream()
+                .map(RestaurantConverter::missionPreViewDTO).collect(Collectors.toList());
+
+        return RestaurantResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(missionList.isLast())
+                .isFirst(missionList.isFirst())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
                 .build();
     }
 

@@ -4,4 +4,6 @@
 
     public interface UserQueryService {
         UserPointDTO findUserInformation(Long id);
+
+
     }
