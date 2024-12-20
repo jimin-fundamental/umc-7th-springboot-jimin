@@ -1,6 +1,7 @@
 package umc.study.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.convertor.UserConverter;
@@ -16,6 +17,7 @@ public class UserCommandServiceImpl implements UserCommandService{
 
     private final UserRepository userRepository;
     private final FoodCategoryRepository foodCategoryRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public boolean existsById(Long userId) {
         return userRepository.existsById(userId);
@@ -24,6 +26,11 @@ public class UserCommandServiceImpl implements UserCommandService{
     @Override
     @Transactional
     public User joinUser(UserRequestDTO.JoinUserDTO request) {
+        // 비밀번호가 null인지 검증
+        if (request.getPassword() == null || request.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("비밀번호는 필수 입력 값입니다.");
+        }
+
         // 요청된 카테고리 이름을 사용해 FoodCategory 조회 또는 생성 - Stream 사용
         FoodCategory foodCategory = foodCategoryRepository.findAll().stream()
                 .filter(category -> category.getName().equals(request.getFoodCategoryName()))
@@ -31,6 +38,7 @@ public class UserCommandServiceImpl implements UserCommandService{
                 .orElseGet(() -> createFoodCategory(request.getFoodCategoryName()));
 
         User newUser = UserConverter.toUser(request,foodCategory);
+        newUser.encodePassword(passwordEncoder.encode(request.getPassword()));
         return userRepository.save(newUser);
     }
 

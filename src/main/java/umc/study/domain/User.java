@@ -47,6 +47,20 @@ public class User extends BaseEntity {
     @ColumnDefault("0")
     private Integer point;
 
+    //role 관련 추가
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
+
     //review, point, mission, alarm에 대한 양방향매핑
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();

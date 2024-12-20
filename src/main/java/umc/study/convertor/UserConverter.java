@@ -31,7 +31,10 @@ public class UserConverter {
                 .username(request.getUsername())
                 .address(request.getAddress())
                 .gender(request.getGender())
+                .email(request.getEmail())   // 추가된 코드
+                .password(request.getPassword())   // 추가된 코드
                 .birthDate(request.getBirthdate())
+                .role(request.getRole())   // 추가된 코드
                 .foodCategory(foodCategory) // 단일 FoodCategory를 설정
                 .build();
     }
